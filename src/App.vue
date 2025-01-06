@@ -15,347 +15,327 @@ import {
   DeviceTabletIcon,
 } from '@heroicons/vue/24/outline'
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselPreviousInner,
+  CarouselNextInner,
+} from '@/components/ui/carousel'
+
+const carouselConfig = {
+  itemsToShow: 2.5,
+}
+
+const screenshots = [
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png',
+    alt: 'Syncara screenshot',
+  },
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_2.png',
+    alt: 'Syncara screenshot',
+  },
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_3.png',
+    alt: 'Syncara screenshot',
+  },
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_4.png',
+    alt: 'Syncara screenshot',
+  },
+]
+
+const desktopScreenshots = [
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_1.png',
+    alt: 'Syncara screenshot',
+  },
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_2.png',
+    alt: 'Syncara screenshot',
+  },
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_3.png',
+    alt: 'Syncara screenshot',
+  },
+  /*
+  {
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/macos_1.png',
+    alt: 'Syncara screenshot',
+  },*/
+]
+
+const bigScreen = screen.width > 1024
+
+if (bigScreen) {
+  desktopScreenshots.push({
+    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/macos_1.png',
+    alt: 'Syncara screenshot',
+  })
+}
+
 document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
 </script>
 
 <template>
+
   <body class="flex flex-col w-screen h-fit root text-[var(--md-sys-color-on-background)]">
     <header class="flex items-center justify-between p-4">
-
       <div class="flex items-center">
-        <img
-          src="./assets/logo.svg"
-          alt="Syncara logo"
-          class="h-14 w-14 me-4"
-        />
+        <img src="./assets/logo.svg" alt="Syncara logo" class="h-12 w-12 lg:h-14 lg:w-14 me-4" />
         <h1 class="title">Syncara</h1>
       </div>
     </header>
 
     <main class="flex flex-col flex-grow scroll-smooth">
-      <section class="flex flex-col items-center gap-8 justify-evenly h-full">
-        <div class="flex items-center gap-8 justify-evenly w-full pb-20">
-          <div class="flex flex-col items-center">
-            <img
-              src="./assets/logo.svg"
-              alt="Syncara logo"
-              class="h-32 w-32 mb-2"
-            />
+      <section class="flex flex-col items-center gap-8 justify-evenly">
+        <div class="flex flex-col lg:flex-row items-center gap-8 justify-evenly w-full pb-20">
+          <div class="flex flex-col items-center mt-24 mb-24 lg:mt-0 lg:mb-0">
+            <img src="./assets/logo.svg" alt="Syncara logo" class="h-24 w-24 lg:h-32 lg:w-32 mb-2" />
             <h1 class="title text-3xl font-semibold">Syncara</h1>
-            <h2 class="text-lg text-[var(--md-sys-color-on-surface-variant)] text-pretty mb-1">
+            <h2 class="text-md lg:text-lg text-[var(--md-sys-color-on-surface-variant)] text-pretty mb-1">
               v1.7.2
             </h2>
-            <p class="text-xl text-pretty">Carry your playlists everywhere, even when offline</p>
+            <p class="text-xl text-pretty text-center lg:text-start">
+              Carry your playlists everywhere, even when offline
+            </p>
 
-            <div class="flex gap-4 mt-4">
-              <md-filled-button
-                href="#download"
-                class="text-lg"
-                >Download</md-filled-button
-              >
+            <div class="flex gap-4 mt-4 justify-between">
+              <md-filled-button href="#download" class="text-lg">Download</md-filled-button>
 
-              <md-filled-tonal-button class="text-lg" target="_blank" href="https://github.com/khaled-0/Syncara">GitHub</md-filled-tonal-button>
+              <md-filled-tonal-button class="text-lg" target="_blank"
+                href="https://github.com/khaled-0/Syncara">GitHub</md-filled-tonal-button>
             </div>
           </div>
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png"
-            alt="Syncara screenshot"
-            class="h-[40vw] rounded-lg"
-          />
+          <img src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png"
+            alt="Syncara screenshot" class="w-[60vw] lg:w-fit lg:h-[40vw] rounded-3xl" />
         </div>
       </section>
 
-      <section class="flex flex-col items-center gap-8 justify-evenly h-full">
+      <section class="flex flex-col items-center gap-4 lg:gap-8 lg:justify-evenly">
         <h1 class="heading decoration-inherit underline underline-offset-4">Features</h1>
 
-        <div class="grid grid-cols-2 items-center justify-evenly gap-8 ps-24 pe-24 w-full">
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 items-center justify-evenly gap-8 ps-8 pe-8 lg:ps-24 lg:pe-24 w-full">
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <arrow-down-tray-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Offline Downloads</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Carry your playlists everywhere, even when offline
             </p>
           </div>
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <arrow-path-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Background Playback</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Listen to your favorite music while using other apps
             </p>
           </div>
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <rocket-launch-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Fluid Gesture Navigations</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Fluid gesture navigations for a seamless experience
             </p>
           </div>
 
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <language-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Realtime Lyrics</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Sing along with the lyrics in realtime
             </p>
           </div>
 
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <computer-desktop-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Cross Platform</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Syncara is available on Android, iOS, Windows, macOS, and Linux
             </p>
           </div>
 
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <play-pause-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">No Ads</h2>
             <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+              class="text-lg text-center lg:text-start text-pretty lg:antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Enjoy your music without any interruptions
             </p>
           </div>
         </div>
       </section>
 
-      <section class="flex flex-col items-center gap-8 justify-evenly h-full">
+      <section class="flex flex-col items-center gap-4 lg:gap-8 justify-evenly h-full">
         <h1 class="heading pt-8">Screenshots</h1>
 
-        <h2
-          class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4"
-        >
+        <h2 class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4">
           Android
         </h2>
 
-        <div class="grid grid-cols-4 items-center justify-evenly gap-8 ps-24 pe-24">
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png"
-            alt="Syncara screenshot"
-            class="h-[40vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_2.png"
-            alt="Syncara screenshot"
-            class="h-[40vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_3.png"
-            alt="Syncara screenshot"
-            class="h-[40vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_4.png"
-            alt="Syncara screenshot"
-            class="h-[40vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
+        <div v-if="bigScreen" class="flex gap-8">
+          <img v-for="ss in screenshots" v-bind:key="ss.src" :src="ss.src"
+            class="h-[40vw] hover:scale-110 transform transition duration-300 rounded-2xl"
+            alt="Syncara screenshot" />
         </div>
 
-        <h2
-          class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4"
-        >
+        <div v-else class="flex gap-8 ps-24 pe-24">
+          <Carousel class="relative w-fit lg:hidden">
+            <CarouselContent>
+              <CarouselItem v-for="ss in screenshots" v-bind:key="ss.src">
+                <img :src="ss.src" alt="Syncara screenshot" class="w-[60vw] rounded-2xl" />
+              </CarouselItem>
+            </CarouselContent>
+
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
+        </div>
+
+        <h2 class="text-xl text-pretty font-medium mt-4 mb-2 decoration-inherit underline underline-offset-4">
           Desktop
         </h2>
 
-        <div class="grid grid-cols-2 items-center justify-evenly gap-10 ps-22 pe-22">
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_1.png"
-            alt="Syncara screenshot"
-            class="w-[42vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_2.png"
-            alt="Syncara screenshot"
-            class="w-[42vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/linux_3.png"
-            alt="Syncara screenshot"
-            class="w-[42vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
-          <img
-            src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/macos_1.png"
-            alt="Syncara screenshot"
-            class="w-[42vw] rounded-lg hover:scale-110 transform transition duration-300"
-          />
+        <div v-if="bigScreen" class="grid grid-cols-2 items-center justify-evenly gap-10 ps-22 pe-22">
+          <img v-for="ss in desktopScreenshots" v-bind:key="ss.src" :src="ss.src"
+            class="w-[42vw] h-fit rounded-2xl hover:scale-110 transform transition duration-300"
+            alt="Syncara screenshot" />
         </div>
+
+        <div v-else>
+          <Carousel class="relative w-fit lg:hidden p-4">
+            <CarouselContent>
+              <CarouselItem v-for="ss in desktopScreenshots" v-bind:key="ss.src">
+                <img :src="ss.src" alt="Syncara screenshot" class="w-full rounded-2xl" />
+              </CarouselItem>
+            </CarouselContent>
+
+            <CarouselPreviousInner />
+            <CarouselNextInner />
+          </Carousel>
+
+        </div>
+
       </section>
 
       <section id="download" class="flex flex-col items-center gap-8 justify-evenly h-full">
         <h1 class="heading pt-8">Download</h1>
 
-        <div class="grid grid-cols-2 items-center justify-evenly gap-8 ps-24 pe-24">
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+        <div class="grid lg:grid-cols-2 items-center justify-evenly gap-8 ps-8 pe-8 lg:ps-24 lg:pe-24">
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <device-tablet-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">Android</h2>
-            <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+            <p class="text-lg text-center lg:text-start text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Download Syncara on your Android device
             </p>
 
-            <md-filled-button
-              target="_blank"
-              href="https://github.com/khaled-0/Syncara/releases/latest/download/app-release.apk"
-              class="text-lg mt-4"
-            >
+            <md-filled-button target="_blank"
+              href="https://github.com/khaled-0/Syncara/releases/latest/download/app-release.apk" class="text-lg mt-4">
               Download
             </md-filled-button>
           </div>
 
-          <div
-            class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-          >
+          <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
             <device-phone-mobile-icon class="size-10 mb-1" />
 
             <h2 class="text-2xl text-pretty font-medium mb-2">iOS</h2>
-            <p
-              class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-            >
+            <p class="text-lg text-center lg:text-start text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
               Unsigned (.ipa) builds are available.
               <br />
-              Note: Use <a class="text-[var(--md-sys-color-primary)] font-medium hover:underline" target="_blank" href="https://sideloadly.io">Sideloadly</a> to install it. Here's a <a class="text-[var(--md-sys-color-primary)] font-medium hover:underline" target="_blank" href="https://youtube.com/watch?v=r91iJ6KRcUs">video tutorial by @ilyassesalama</a>
+              Note: Use
+              <a class="text-[var(--md-sys-color-primary)] font-medium hover:underline" target="_blank"
+                href="https://sideloadly.io">Sideloadly</a>
+              to install it. Here's a
+              <a class="text-[var(--md-sys-color-primary)] font-medium hover:underline" target="_blank"
+                href="https://youtube.com/watch?v=r91iJ6KRcUs">video tutorial by @ilyassesalama</a>
             </p>
 
-            <md-filled-button
-              target="_blank"
+            <md-filled-button target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_ios_unsigned.ipa"
-              class="text-lg mt-4"
-              >Download</md-filled-button
-            >
+              class="text-lg mt-4">Download</md-filled-button>
           </div>
         </div>
 
-        <div
-          class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]"
-        >
+        <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
           <computer-desktop-icon class="size-10 mb-1" />
 
           <h2 class="text-2xl text-pretty font-medium mb-2">Desktop</h2>
-          <p
-            class="text-lg text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]"
-          >
+          <p class="text-lg text-center lg:text-start text-pretty antialiased font-normal text-[var(--md-sys-color-on-surface-variant)]">
             Download Syncara on your desktop
           </p>
 
           <div class="flex gap-4 mt-4">
-            <md-filled-tonal-button
-              target="_blank"
+            <md-filled-tonal-button target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_linux.zip"
-              class="text-lg mt-4"
-              >Linux</md-filled-tonal-button
-            >
+              class="text-lg mt-4">Linux</md-filled-tonal-button>
 
-            <md-filled-button
-              target="_blank"
+            <md-filled-button target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_macos.zip"
-              class="text-lg mt-4"
-              >macOS</md-filled-button
-            >
+              class="text-lg mt-4">macOS</md-filled-button>
           </div>
         </div>
       </section>
 
       <section class="flex flex-col items-center gap-8 justify-evenly h-full">
-        <h1 class="heading pt-8">Also available on your favourite App Stores</h1>
+        <h1 class="heading pt-8 text-center lg:text-start">Also available on your favourite App Stores</h1>
 
-        <h2
-          class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4"
-        >
+        <h2 class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4">
           Android
         </h2>
 
-        <div class="flex gap-6 justify-center items-center content-center">
+        <div class="flex flex-col lg:flex-row gap-6 justify-center items-center content-center">
           <a href="https://apt.izzysoft.de/fdroid/index/apk/syncara.app">
-            <img
-              src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/get-it-on-izzy.png"
-              alt="Izzys F-Droid Repository"
-              class="h-16"
-            />
+            <img src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/get-it-on-izzy.png"
+              alt="Izzys F-Droid Repository" class="h-16" />
           </a>
           <a
-            href="http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://app/%7B%22id%22%3A%22syncara.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fkhaled-0%2FTubeSync%22%2C%22author%22%3A%22Khaled%22%2C%22name%22%3A%22Syncara%22%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Afalse%7D%22%7D"
-          >
-            <img
-              src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/badge_obtainium.png"
-              alt="Obtainium"
-              class="h-16"
-            />
+            href="http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://app/%7B%22id%22%3A%22syncara.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fkhaled-0%2FTubeSync%22%2C%22author%22%3A%22Khaled%22%2C%22name%22%3A%22Syncara%22%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Afalse%7D%22%7D">
+            <img src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/badge_obtainium.png"
+              alt="Obtainium" class="h-16" />
           </a>
           <a href="https://www.openapk.net/syncara/syncara.app">
-            <img
-              src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/openapk-badge.png"
-              alt="OpenAPK"
-              class="h-16"
-            />
+            <img src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/openapk-badge.png"
+              alt="OpenAPK" class="h-16" />
           </a>
           <a href="https://www.androidfreeware.net/download-syncara-apk.html">
-            <img
-              src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/android-freeware.png"
-              alt="Android Freeware"
-              class="h-16"
-            />
+            <img src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/android-freeware.png"
+              alt="Android Freeware" class="h-16" />
           </a>
         </div>
 
-        <h2
-          class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4"
-        >
+        <h2 class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4">
           Linux
         </h2>
 
         <div class="flex gap-6 justify-center items-center content-center">
           <a href="https://flathub.org/apps/details/syncara.app">
-            <img
-              src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/flathub.png"
-              alt="Flathub"
-              class="h-16"
-            />
+            <img src="https://raw.githubusercontent.com/khaled-0/Syncara/main/docs/badges/flathub.png" alt="Flathub"
+              class="h-16" />
           </a>
         </div>
-
       </section>
 
       <footer class="flex flex-col items-center justify-center p-4">
         <p class="text-md text-[var(--md-sys-color-on-surface-variant)]">
           Made by
-          <a
-            href="https:/.github.com/PranavPurwar"
-            class="text-[var(--md-sys-color-primary)] hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/PranavPurwar" class="text-[var(--md-sys-color-primary)] hover:underline"
+            target="_blank" rel="noopener noreferrer">
             Pranav Purwar
           </a>
         </p>
