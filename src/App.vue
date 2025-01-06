@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import '@material/web/all.js'
-import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js'
 import {
   ArrowDownTrayIcon,
   ArrowPathIcon,
-  BoltIcon,
-  MusicalNoteIcon,
   RocketLaunchIcon,
   PlayPauseIcon,
   LanguageIcon,
-  CpuChipIcon,
   ComputerDesktopIcon,
   DevicePhoneMobileIcon,
   DeviceTabletIcon,
@@ -24,10 +19,8 @@ import {
   CarouselPreviousInner,
   CarouselNextInner,
 } from '@/components/ui/carousel'
-
-const carouselConfig = {
-  itemsToShow: 2.5,
-}
+import TonalButton from './components/ui/TonalButton.vue'
+import FilledButton from './components/ui/FilledButton.vue'
 
 const screenshots = [
   {
@@ -76,10 +69,7 @@ if (bigScreen) {
     alt: 'Syncara screenshot',
   })
 }
-
-document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
 </script>
-
 <template>
 
   <body class="flex flex-col w-screen h-fit root text-[var(--md-sys-color-on-background)]">
@@ -104,10 +94,9 @@ document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
             </p>
 
             <div class="flex gap-4 mt-4 justify-between">
-              <md-filled-button href="#download" class="text-lg">Download</md-filled-button>
+              <FilledButton href="#download" title="Download" />
 
-              <md-filled-tonal-button class="text-lg" target="_blank"
-                href="https://github.com/khaled-0/Syncara">GitHub</md-filled-tonal-button>
+              <TonalButton href="https://github.com/khaled-0/Syncara" title="GitHub" />
             </div>
           </div>
           <img src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png"
@@ -245,10 +234,9 @@ document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
               Download Syncara on your Android device
             </p>
 
-            <md-filled-button target="_blank"
-              href="https://github.com/khaled-0/Syncara/releases/latest/download/app-release.apk" class="text-lg mt-4">
-              Download
-            </md-filled-button>
+            <FilledButton target="_blank"
+              href="https://github.com/khaled-0/Syncara/releases/latest/download/app-release.apk" class="mt-4"
+              title="Download"/>
           </div>
 
           <div class="flex flex-col items-center rounded-3xl p-8 hover:bg-[var(--md-sys-color-surface-container-high)]">
@@ -266,9 +254,10 @@ document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
                 href="https://youtube.com/watch?v=r91iJ6KRcUs">video tutorial by @ilyassesalama</a>
             </p>
 
-            <md-filled-button target="_blank"
+            <FilledButton target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_ios_unsigned.ipa"
-              class="text-lg mt-4">Download</md-filled-button>
+              class="mt-4"
+              title="Download" />
           </div>
         </div>
 
@@ -281,13 +270,15 @@ document.adoptedStyleSheets.push(typescaleStyles.styleSheet!)
           </p>
 
           <div class="flex gap-4 mt-4">
-            <md-filled-tonal-button target="_blank"
+            <TonalButton target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_linux.zip"
-              class="text-lg mt-4">Linux</md-filled-tonal-button>
+              class="mt-4"
+              title="Linux" />
 
-            <md-filled-button target="_blank"
+            <FilledButton target="_blank"
               href="https://github.com/khaled-0/Syncara/releases/latest/download/syncara_macos.zip"
-              class="text-lg mt-4">macOS</md-filled-button>
+              class="mt-4"
+              title="macOS" />
           </div>
         </div>
       </section>

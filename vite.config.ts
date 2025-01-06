@@ -24,4 +24,18 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
+  build: {
+    minify: 'esbuild',
+    cssCodeSplit: true,
+    cssMinify: false,
+    rollupOptions: {
+      output: {
+        compact: true,
+        preserveModules: true,
+      },
+      treeshake: 'smallest',
+      cache: true,
+      preserveEntrySignatures: 'strict',
+    }
+  },
 })
