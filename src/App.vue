@@ -23,22 +23,12 @@ import TonalButton from './components/ui/TonalButton.vue'
 import FilledButton from './components/ui/FilledButton.vue'
 
 const screenshots = [
-  {
-    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png',
-    alt: 'Syncara screenshot',
-  },
-  {
-    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_2.png',
-    alt: 'Syncara screenshot',
-  },
-  {
-    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_3.png',
-    alt: 'Syncara screenshot',
-  },
-  {
-    src: 'https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_4.png',
-    alt: 'Syncara screenshot',
-  },
+  '1.jpg',
+  '2.jpg',
+  '3.jpg',
+  '4.jpg',
+  '5.jpg',
+  '6.jpg'
 ]
 
 const desktopScreenshots = [
@@ -99,7 +89,7 @@ if (bigScreen) {
               <TonalButton href="https://github.com/khaled-0/Syncara" title="GitHub" />
             </div>
           </div>
-          <img src="https://raw.githubusercontent.com/khaled-0/Syncara/refs/heads/main/docs/screenshots/android_1.png"
+          <img src='/1.jpg'
             alt="Syncara screenshot" class="w-[60vw] lg:w-fit lg:h-[40vw] rounded-3xl" />
         </div>
       </section>
@@ -186,7 +176,7 @@ if (bigScreen) {
           <Carousel class="relative w-fit lg:hidden">
             <CarouselContent>
               <CarouselItem v-for="ss in screenshots" v-bind:key="ss.src">
-                <img :src="ss.src" alt="Syncara screenshot" class="w-[60vw] rounded-2xl" />
+                <img :src="ss" alt="Syncara screenshot" class="w-[60vw] rounded-2xl" />
               </CarouselItem>
             </CarouselContent>
 
@@ -284,7 +274,7 @@ if (bigScreen) {
       </section>
 
       <section class="flex flex-col items-center gap-8 justify-evenly h-full">
-        <h1 class="heading pt-8 text-center lg:text-start">Also available on your favourite App Stores</h1>
+        <h1 class="heading pt-8 text-center lg:text-start ps-8 pe-8 lg:ps-16 lg:pe-16">Also available on your favourite App Stores</h1>
 
         <h2 class="text-xl text-pretty font-medium mb-2 decoration-inherit underline underline-offset-4">
           Android
